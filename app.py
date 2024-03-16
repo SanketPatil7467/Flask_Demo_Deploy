@@ -10,3 +10,9 @@ def hello_world():
 @app.route("/home")
 def home():
     return render_template('home.html')
+
+
+@app.route("/count/<int:n>")
+def calculation(n):
+    n5 = n+5;
+    return render_template('home.html', n=n,n5=n5)
