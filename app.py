@@ -15,4 +15,4 @@ def home():
 @app.route("/count/<int:n>")
 def calculation(n):
     n5 = n+5;
-    return render_template('home.html', n=n,n5=n5)
+    return render_template('count.html', n=n,n5=n5)
