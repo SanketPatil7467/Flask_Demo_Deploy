@@ -22,6 +22,7 @@ def returnJSON():
 
 @app.route("/create_new_object/<string:obj_name>")
 def createObject(obj_name):
+    my_dict = {}
     with open('db.txt', 'r') as file:
         data = file.read()
         my_dict = json.loads(data)
