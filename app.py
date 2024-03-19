@@ -32,14 +32,14 @@ def returnObjects():
         }
         return json.loads(json.dumps(answer))
 
-@app.route("/create_new_object/<string:obj_name>")
-def createObject(obj_name):
+@app.route("/get_object/<string:obj_name>")
+def getObject(obj_name):
     with open('db.txt', 'r') as file:
-        my_dict = json.load(file)
-    my_dict[obj_name] = {}
-    with open('db.txt', 'w') as file2:
-        file2.write(json.dumps(my_dict))
-    return f"Object created successfully {obj_name}!"
+        data = file.read()
+        my_dict = json.loads(data)
+        dict2 = my_dict[obj_name]
+        return json.loads(json.dumps(dict2))
+
 
 @app.route("/count/<int:n>")
 def calculation(n):
