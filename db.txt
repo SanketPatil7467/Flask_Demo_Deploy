@@ -1,1 +1,28 @@
-{"Students":{"12110053" : {"Name":"Sanket","Surname":"Patil"}}}
+{"Students": {"12110053": {"Name": "Sanket", "Surname": "Patil"},
+                        "1000": {"Name": "Name1000", "Surname": "Surname1000"},
+                        "1001": {"Name": "Name1001", "Surname": "Surname1001"},
+                        "1002": {"Name": "Name1002", "Surname": "Surname1002"},
+                        "1003": {"Name": "Name1003", "Surname": "Surname1003"},
+                        "1004": {"Name": "Name1004", "Surname": "Surname1004"},
+                        "1005": {"Name": "Name1005", "Surname": "Surname1005"},
+                        "1006": {"Name": "Name1006", "Surname": "Surname1006"},
+                        "1007": {"Name": "Name1007", "Surname": "Surname1007"}
+
+    },"Employees":{"2001": {"Name": "Name2001", "Surname": "Surname2001"},
+                   "2002": {"Name": "Name2002", "Surname": "Surname2002"},
+                   "2003": {"Name": "Name2003", "Surname": "Surname2003"},
+                   "2004": {"Name": "Name2004", "Surname": "Surname2004"},
+                   "2005": {"Name": "Name2005", "Surname": "Surname2005"},
+                   "2006": {"Name": "Name2006", "Surname": "Surname2006"},
+                   "2007": {"Name": "Name2007", "Surname": "Surname2007"},
+                   "2008": {"Name": "Name2008", "Surname": "Surname2008"}
+
+    },"Products" : {"Product1":{"Name" : "Product1" , "Price":"100"},
+                    "Product2": {"Name": "Product2", "Price": "102"},
+                    "Product3":{"Name" : "Product3" , "Price":"115"},
+                    "Product4":{"Name" : "Product4" , "Price":"112"},
+                    "Product5":{"Name" : "Product5" , "Price":"123"},
+                    "Product6":{"Name" : "Product6" , "Price":"254"},
+                    "Product7":{"Name" : "Product7" , "Price":"354"}
+
+    }}
