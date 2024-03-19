@@ -19,6 +19,17 @@ def returnJSON():
         data = file.read()
         return json.loads(data)
 
+
+@app.route("/create_new_object/<string:obj_name>")
+def createObject(obj_name):
+    with open('db.txt', 'r') as file:
+        data = file.read()
+        my_dict = json.loads(data)
+        my_dict[obj_name] = {}
+    with open('db.txt', 'w') as file:
+        json.dump(my_dict, file)
+    return "Object created successfully !"
+
 @app.route("/count/<int:n>")
 def calculation(n):
     n5 = n+5
