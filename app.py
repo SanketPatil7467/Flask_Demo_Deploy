@@ -17,7 +17,7 @@ def home():
 def returnJSON():
     with open('db.txt', 'r') as file:
         data = file.read()
-        return json.loads(data)
+        return json.loads(data["Students"])
 
 
 @app.route("/objects")
