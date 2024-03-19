@@ -22,13 +22,12 @@ def returnJSON():
 
 @app.route("/create_new_object/<string:obj_name>")
 def createObject(obj_name):
-    # my_dict = {}
-    # with open('db.txt', 'r') as file:
-    #     data = file.read()
-    #     my_dict = json.loads(data)
-    #     my_dict[obj_name] = {}
-    # with open('db.txt', 'w') as file:
-    #     json.dump(my_dict, file)
+    with open('db.txt', 'r') as file:
+        data = file.read()
+        my_dict = json.loads(data)
+    my_dict[obj_name] = {}
+    with open('db.txt', 'w') as file2:
+        file2.write(json.dumps(my_dict))
     return f"Object created successfully {obj_name}!"
 
 @app.route("/count/<int:n>")
