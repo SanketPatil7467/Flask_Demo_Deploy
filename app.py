@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import json
+# import json
 
 app = Flask(__name__)
 
@@ -13,12 +13,12 @@ def home():
     return render_template('home.html')
 
 
-@app.route("/return_json")
-def home():
-    file_path = 'db.txt'
-    with open(file_path, 'r') as file:
-        data = file.read()
-        return json.loads(data)
+# @app.route("/return_json")
+# def home():
+#     file_path = 'db.txt'
+#     with open(file_path, 'r') as file:
+#         data = file.read()
+#         return json.loads(data)
 
     
 
