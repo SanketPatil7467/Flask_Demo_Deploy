@@ -1,7 +1,9 @@
 from flask import Flask, render_template
-# import json
+import json
 
 app = Flask(__name__)
+
+text = '{"Name": "Sanket","Surname": "Patil", "PRN": "12110053"}'
 
 @app.route("/")
 def hello_world():
@@ -15,10 +17,7 @@ def home():
 
 @app.route("/return_json")
 def home():
-    file_path = 'db.txt'
-#     with open(file_path, 'r') as file:
-#         data = file.read()
-#         return json.loads(data)
+        return json.loads(text)
 
     
 
