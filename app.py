@@ -1,9 +1,6 @@
 from flask import Flask, render_template
-import json
 
 app = Flask(__name__)
-
-text = '{"Name": "Sanket","Surname": "Patil", "PRN": "12110053"}'
 
 @app.route("/")
 def hello_world():
@@ -13,12 +10,6 @@ def hello_world():
 @app.route("/home")
 def home():
     return render_template('home.html')
-
-
-@app.route("/return_json")
-def home():
-        return json.loads(text)
-
     
 
 @app.route("/count/<int:n>")
