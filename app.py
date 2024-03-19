@@ -15,8 +15,9 @@ def home():
 
 @app.route("/returnjson")
 def returnJSON():
-    my_dict = {"Name":"Sanket","Surname":"Patil","PRN":"12110053"}
-    return json.dumps(my_dict)
+    with open('db.txt', 'r') as file:
+        data = file.read()
+        return json.loads(data)
 
 @app.route("/count/<int:n>")
 def calculation(n):
