@@ -17,7 +17,7 @@ def home():
 def returnJSON():
     with open('db.txt', 'r') as file:
         data = file.read()
-        return json.loads(data["Students"])
+        return json.loads(data)
 
 
 @app.route("/objects")
@@ -30,7 +30,7 @@ def returnObjects():
             "No of Objects" : len(keysList),
             "Objects" : keysList
         }
-        return json.loads(answer)
+        return json.loads(json.dumps(answer))
 
 @app.route("/create_new_object/<string:obj_name>")
 def createObject(obj_name):
