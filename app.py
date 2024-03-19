@@ -20,6 +20,18 @@ def returnJSON():
         return json.loads(data)
 
 
+@app.route("/objects")
+def returnObjects():
+    with open('db.txt', 'r') as file:
+        data = file.read()
+        my_dict = json.loads(data)
+        keysList = list(my_dict.keys())
+        answer = {
+            "No of Objects" : len(keysList),
+            "Objects" : keysList
+        }
+        return json.loads(answer)
+
 @app.route("/create_new_object/<string:obj_name>")
 def createObject(obj_name):
     with open('db.txt', 'r') as file:
