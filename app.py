@@ -41,6 +41,21 @@ def getObject(obj_name):
         return json.loads(json.dumps(dict2))
 
 
+def save_dict_to_file(dictionary, file_path):
+    with open(file_path, 'w') as file:
+        json.dump(dictionary, file)
+
+@app.route("/add/<string:obj_name>/<string:unique_key>/<string:new_entity>")
+def addEntity(obj_name, unique_key, new_entity):
+    with open('db.txt', 'r') as file:
+        new_entity_dict = json.loads(new_entity)
+        data = file.read()
+        my_dict = json.loads(data)
+    my_dict[obj_name][unique_key] = new_entity_dict
+    save_dict_to_file(my_dict,file)
+    return "Added Successfully"
+
+
 @app.route("/count/<int:n>")
 def calculation(n):
     n5 = n+5
