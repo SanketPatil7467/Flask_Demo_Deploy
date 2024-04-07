@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+from urllib.parse import urlencode
+from urllib.parse import parse_qs
 import json
 
 app = Flask(__name__)
@@ -48,7 +50,8 @@ def save_dict_to_file(dictionary, file_path):
 @app.route("/add/<string:obj_name>/<string:unique_key>/<string:new_entity>")
 def addEntity(obj_name, unique_key, new_entity):
     with open('db.txt', 'r') as file:
-        new_entity_dict = json.loads(new_entity)
+        new_entity_dict = parse_qs(new_entity)
+        new_entity_dict = json.loads(new_entity_dict)
         data = file.read()
         my_dict = json.loads(data)
         my_dict[obj_name][unique_key] = new_entity_dict
