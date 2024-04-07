@@ -51,8 +51,8 @@ def addEntity(obj_name, unique_key, new_entity):
         new_entity_dict = json.loads(new_entity)
         data = file.read()
         my_dict = json.loads(data)
-    my_dict[obj_name][unique_key] = new_entity_dict
-    save_dict_to_file(my_dict,file)
+        my_dict[obj_name][unique_key] = new_entity_dict
+        save_dict_to_file(my_dict,file)
     return "Added Successfully"
 
 
