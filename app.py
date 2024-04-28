@@ -1,6 +1,4 @@
 from flask import Flask, render_template
-from urllib.parse import urlencode
-from urllib.parse import parse_qs
 import json
 
 app = Flask(__name__)
@@ -8,12 +6,6 @@ app = Flask(__name__)
 @app.route("/")
 def hello_world():
     return render_template('index.html')
-
-
-@app.route("/home")
-def home():
-    return render_template('home.html')
-
 
 @app.route("/returnjson")
 def returnJSON():
@@ -39,9 +31,21 @@ def getObject(obj_name):
     with open('db.txt', 'r') as file:
         data = file.read()
         my_dict = json.loads(data)
+        if obj_name not in my_dict:
+            return json.loads(json.dumps({"status": -1}))
         dict2 = my_dict[obj_name]
         return json.loads(json.dumps(dict2))
 
+
+@app.route("/exists/<string:obj_name>")
+def existsObject(obj_name):
+    with open('db.txt', 'r') as file:
+        data = file.read()
+        my_dict = json.loads(data)
+        if obj_name in my_dict:
+            return json.loads(json.dumps({"status" : 1}))
+        else:
+            return json.loads(json.dumps({"status":-1}))
 
 @app.route("/count/<string:obj_name>")
 def countEntities(obj_name):
