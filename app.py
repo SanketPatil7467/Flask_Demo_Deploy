@@ -48,6 +48,8 @@ def countEntities(obj_name):
     with open('db.txt', 'r') as file:
         data = file.read()
         my_dict = json.loads(data)
+        if obj_name not in my_dict:
+            return json.loads(json.dumps({"status": -1}))
         dict2 = my_dict[obj_name]
         count = len(dict2)
         answer = {
