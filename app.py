@@ -16,7 +16,7 @@ def hello_world():
     return render_template('index.html')
 
 
-@app.route("<string:key>/<string:password>/returnjson")
+@app.route("/<string:key>/<string:password>/returnjson")
 @limiter.limit("10 per day")
 def returnJSON(key,password):
     with open('keys.txt', 'r') as k_file:
@@ -32,7 +32,7 @@ def returnJSON(key,password):
         return json.loads(data)
 
 
-@app.route("<string:key>/<string:password>/objects")
+@app.route("/<string:key>/<string:password>/objects")
 @limiter.limit("10 per day")
 def returnObjects(key, password):
     with open('keys.txt', 'r') as k_file:
@@ -54,7 +54,7 @@ def returnObjects(key, password):
         return json.loads(json.dumps(answer))
 
 
-@app.route("<string:key>/<string:password>/get_object/<string:obj_name>")
+@app.route("/<string:key>/<string:password>/get_object/<string:obj_name>")
 @limiter.limit("10 per day")
 def getObject(key, password,obj_name):
     with open('keys.txt', 'r') as k_file:
@@ -74,7 +74,7 @@ def getObject(key, password,obj_name):
         return json.loads(json.dumps(dict2))
 
 
-@app.route("<string:key>/<string:password>/exists/<string:obj_name>")
+@app.route("/<string:key>/<string:password>/exists/<string:obj_name>")
 @limiter.limit("10 per day")
 def existsObject(key, password,obj_name):
     with open('keys.txt', 'r') as k_file:
@@ -94,7 +94,7 @@ def existsObject(key, password,obj_name):
             return json.loads(json.dumps({"status":-1}))
 
 
-@app.route("<string:key>/<string:password>/count/<string:obj_name>")
+@app.route("/<string:key>/<string:password>/count/<string:obj_name>")
 @limiter.limit("10 per day")
 def countEntities(key, password, obj_name):
     with open('keys.txt', 'r') as k_file:
