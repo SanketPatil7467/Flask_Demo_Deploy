@@ -7,7 +7,7 @@ app = Flask(__name__)
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=["10 per day"],
+    default_limits=["100 per day"],
     storage_uri="memory://",
 )
 
