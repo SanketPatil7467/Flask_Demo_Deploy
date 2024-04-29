@@ -15,17 +15,34 @@ limiter = Limiter(
 def hello_world():
     return render_template('index.html')
 
-@app.route("/returnjson")
+
+@app.route("<string:key>/<string:password>/returnjson")
 @limiter.limit("10 per day")
-def returnJSON():
+def returnJSON(key,password):
+    with open('keys.txt', 'r') as k_file:
+        k_data = k_file.read()
+        k_my_dict = json.loads(k_data)
+        if key not in k_my_dict:
+            return "Invalid Key"
+        else:
+            if password != k_my_dict[key]:
+                return "Invalid Password"
     with open('db.txt', 'r') as file:
         data = file.read()
         return json.loads(data)
 
 
-@app.route("/objects")
+@app.route("<string:key>/<string:password>/objects")
 @limiter.limit("10 per day")
-def returnObjects():
+def returnObjects(key, password):
+    with open('keys.txt', 'r') as k_file:
+        k_data = k_file.read()
+        k_my_dict = json.loads(k_data)
+        if key not in k_my_dict:
+            return "Invalid Key"
+        else:
+            if password != k_my_dict[key]:
+                return "Invalid Password"
     with open('db.txt', 'r') as file:
         data = file.read()
         my_dict = json.loads(data)
@@ -36,9 +53,18 @@ def returnObjects():
         }
         return json.loads(json.dumps(answer))
 
-@app.route("/get_object/<string:obj_name>")
+
+@app.route("<string:key>/<string:password>/get_object/<string:obj_name>")
 @limiter.limit("10 per day")
-def getObject(obj_name):
+def getObject(key, password,obj_name):
+    with open('keys.txt', 'r') as k_file:
+        k_data = k_file.read()
+        k_my_dict = json.loads(k_data)
+        if key not in k_my_dict:
+            return "Invalid Key"
+        else:
+            if password != k_my_dict[key]:
+                return "Invalid Password"
     with open('db.txt', 'r') as file:
         data = file.read()
         my_dict = json.loads(data)
@@ -48,9 +74,17 @@ def getObject(obj_name):
         return json.loads(json.dumps(dict2))
 
 
-@app.route("/exists/<string:obj_name>")
+@app.route("<string:key>/<string:password>/exists/<string:obj_name>")
 @limiter.limit("10 per day")
-def existsObject(obj_name):
+def existsObject(key, password,obj_name):
+    with open('keys.txt', 'r') as k_file:
+        k_data = k_file.read()
+        k_my_dict = json.loads(k_data)
+        if key not in k_my_dict:
+            return "Invalid Key"
+        else:
+            if password != k_my_dict[key]:
+                return "Invalid Password"
     with open('db.txt', 'r') as file:
         data = file.read()
         my_dict = json.loads(data)
@@ -59,9 +93,18 @@ def existsObject(obj_name):
         else:
             return json.loads(json.dumps({"status":-1}))
 
-@app.route("/count/<string:obj_name>")
+
+@app.route("<string:key>/<string:password>/count/<string:obj_name>")
 @limiter.limit("10 per day")
-def countEntities(obj_name):
+def countEntities(key, password, obj_name):
+    with open('keys.txt', 'r') as k_file:
+        k_data = k_file.read()
+        k_my_dict = json.loads(k_data)
+        if key not in k_my_dict:
+            return "Invalid Key"
+        else:
+            if password != k_my_dict[key]:
+                return "Invalid Password"
     with open('db.txt', 'r') as file:
         data = file.read()
         my_dict = json.loads(data)
