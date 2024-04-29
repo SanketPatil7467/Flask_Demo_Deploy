@@ -62,7 +62,7 @@ def countEntities(obj_name):
         return json.loads(json.dumps(answer))
 
 
-@app.route("/count/<int:n>")
-def calculation(n):
-    n5 = n+5
-    return render_template('count.html', n=n,n5=n5)
+# @app.route("/count/<int:n>")
+# def calculation(n):
+#     n5 = n+5
+#     return render_template('count.html', n=n,n5=n5)
