@@ -7,7 +7,7 @@ app = Flask(__name__)
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=["100 per day"],
+    default_limits=["50 per day"],
     storage_uri="memory://",
 )
 
@@ -116,9 +116,3 @@ def countEntities(key, password, obj_name):
             "entities":count
         }
         return json.loads(json.dumps(answer))
-
-
-# @app.route("/count/<int:n>")
-# def calculation(n):
-#     n5 = n+5
-#     return render_template('count.html', n=n,n5=n5)
