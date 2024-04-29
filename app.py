@@ -1,13 +1,22 @@
 from flask import Flask, render_template
 import json
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["10 per day"],
+    storage_uri="memory://",
+)
 
 @app.route("/")
 def hello_world():
     return render_template('index.html')
 
 @app.route("/returnjson")
+@limiter.limit("10 per day")
 def returnJSON():
     with open('db.txt', 'r') as file:
         data = file.read()
@@ -15,6 +24,7 @@ def returnJSON():
 
 
 @app.route("/objects")
+@limiter.limit("10 per day")
 def returnObjects():
     with open('db.txt', 'r') as file:
         data = file.read()
@@ -27,6 +37,7 @@ def returnObjects():
         return json.loads(json.dumps(answer))
 
 @app.route("/get_object/<string:obj_name>")
+@limiter.limit("10 per day")
 def getObject(obj_name):
     with open('db.txt', 'r') as file:
         data = file.read()
@@ -38,6 +49,7 @@ def getObject(obj_name):
 
 
 @app.route("/exists/<string:obj_name>")
+@limiter.limit("10 per day")
 def existsObject(obj_name):
     with open('db.txt', 'r') as file:
         data = file.read()
@@ -48,6 +60,7 @@ def existsObject(obj_name):
             return json.loads(json.dumps({"status":-1}))
 
 @app.route("/count/<string:obj_name>")
+@limiter.limit("10 per day")
 def countEntities(obj_name):
     with open('db.txt', 'r') as file:
         data = file.read()
